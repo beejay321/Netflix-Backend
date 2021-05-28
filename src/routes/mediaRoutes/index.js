@@ -30,9 +30,9 @@ MediaRouter.post("/", mediaPostValidation, async (req, res, next) => {
       //   };
 
       const newMedia = {
-        ...req.body,
         imdbID: uniqid(),
         createdAt: new Date(),
+        ...req.body,
         Reviews: [],
       };
 
@@ -151,7 +151,7 @@ MediaRouter.post("/:id/review", async (req, res, next) => {
     medium.Reviews.push(newReview);
     writeMedia(media);
     //   console.log(blogPost);
-    res.status(201).send(newReview);
+    res.status(201).send(medium);
   } catch (error) {
     next(error);
   }
